@@ -12,9 +12,6 @@ class Patient extends Model
     // Table associated with the model
     protected $table = 'patients';
 
-    // Primary key
-    protected $primaryKey = 'patient_id';
-
     // Indicates if the model should be timestamped
 
     // Fields that can be mass-assigned
