@@ -31,7 +31,10 @@
                         <td>{{ $patient->age }}</td>
                         <td>{{ $patient->birthday->format('d/m/Y') }}</td>
                         <td class="inline-flex justify-center space-x-1.5">
-                            <!-- Edit button -->
+                            <a href="{{ route('patient.show', $patient) }}" class="btn btn-outline btn-info">
+                                <x-heroicon-o-eye
+                                    class="w-6 h-6"/>
+                            </a>
                             <a href="{{ route('patient.edit', $patient) }}" class="btn btn-outline btn-warning">
                                 <x-heroicon-o-pencil-square
                                     class="w-6 h-6"/>
