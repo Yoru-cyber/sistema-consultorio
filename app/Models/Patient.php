@@ -30,5 +30,10 @@ class Patient extends Model
         'birthday' => 'date',
     ];
 
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
+
 
 }

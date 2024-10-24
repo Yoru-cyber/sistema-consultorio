@@ -9,7 +9,8 @@
         Pacientes
         <x-heroicon-o-users class="w-8 h-8  mx-2"/>
     </a>
-    <a class="inline-flex justify-center text-lg font-medium  items-center  tracking-tighter btn btn-ghost">
+    <a href="{{route('recipe.index')}}"
+       class="inline-flex justify-center text-lg font-medium  items-center  tracking-tighter btn btn-ghost">
         Recipes
         <x-heroicon-o-book-open class="w-8 h-8 mx-2"/>
     </a>

@@ -20,7 +20,7 @@
                 <tbody class="w-full lg:w-fit text-center">
                 @foreach ($patients as $patient)
                     <tr>
-                        <th>{{ $patient->patient_id }}</th>
+                        <th>{{ $patient->id }}</th>
                         <td>{{ $patient->name }}</td>
                         <td>{{ $patient->dni }}</td>
                         <td>{{ $patient->sex }}</td>
@@ -57,6 +57,10 @@
                 </tbody>
             </table>
         </div>
+        <a href="{{ route('patient.create') }}"
+           class="btn btn-outline btn-success fixed w-fit bottom-0 right-0 mb-10 sm:mb-5 m-2 p-2">Nuevo Paciente
+            <x-heroicon-o-user class="w-6 h-6"/>
+        </a>
         {{$patients->links()}}
     </div>
 

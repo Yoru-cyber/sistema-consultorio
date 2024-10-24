@@ -2,11 +2,24 @@
 
 namespace App\Models;
 
+use Database\Factories\RecipeFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Recipe extends Model
 {
-    /** @use HasFactory<\Database\Factories\RecipeFactory> */
+    /** @use HasFactory<RecipeFactory> */
     use HasFactory;
+
+    protected $fillable = ['patient_id', 'doctor_id', 'date', 'prescription'];
+
+    public function patient(): BelongsTo
+    {
+        return $this->belongsTo(Patient::class);
+    }
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 }

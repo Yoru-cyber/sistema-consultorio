@@ -10,4 +10,8 @@ class Doctor extends Model
     /** @use HasFactory<\Database\Factories\DoctorFactory> */
     use HasFactory;
     protected $fillable = ['name', 'dni'];
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }
