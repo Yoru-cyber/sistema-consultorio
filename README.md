@@ -1,66 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project Setup ✨
 
+This project uses Docker and Laravel Sail to provide a consistent development environment. It includes services for running a Laravel app and a PostgreSQL database.
+
+## Prerequisites 🤓☝️
+
+Make sure you have the following installed:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Laravel Sail](https://laravel.com/docs/8.x/sail)
+
+## Getting Started 
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Yoru-cyber/sistema-consultorio.git
+cd project-name
+```
+
+### 2. Configure Environment
+
+Copy the example `.env` file and adjust environment variables if necessary.
+
+```bash
+cp .env.example .env
+```
+
+Make sure the database environment variables match the configuration for the PostgreSQL service:
+
+- `DB_CONNECTION=pgsql`
+- `DB_HOST=pgsql`
+- `DB_PORT=5432`
+- `DB_DATABASE=your_database_name`
+- `DB_USERNAME=your_database_user`
+- `DB_PASSWORD=your_database_password`
+
+### 3. Start the Application
+
+Use Laravel Sail to start the Docker containers:
+
+```bash
+./vendor/bin/sail up
+```
+
+This will build and run the following services:
+
+- **laravel.test** (Laravel application)
+- **pgsql** (PostgreSQL database)
+
+### 4. Install Dependencies
+
+Once the services are running, install PHP dependencies inside the container:
+
+```bash
+./vendor/bin/sail composer install
+```
+
+### 5. Run Database Migrations
+
+Migrate the database using Laravel's migration system:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+### 6. Access the Application
+
+The Laravel app will be accessible at `http://localhost` by default. If you have modified the `APP_PORT` environment variable, use that port instead.
+
+If you are running Vite for frontend assets, it will be accessible at `http://localhost:5173`.
+
+### 7. Shutting Down
+
+To stop and remove the containers, run:
+
+```bash
+./vendor/bin/sail down
+```
+
+## Useful Commands
+
+- **Access the Laravel container:**
+
+  ```bash
+  ./vendor/bin/sail shell
+  ```
+
+- **Run PHPUnit tests:**
+
+  ```bash
+  ./vendor/bin/sail test
+  ```
+
+- **Rebuild the containers:**
+
+  If you make changes to the Dockerfile or environment, you may need to rebuild the containers:
+
+  ```bash
+  ./vendor/bin/sail build
+  ```
+<h2 align="center">That's all, au revoir!</h2>
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<img width="400" src="https://i.pinimg.com/736x/04/68/26/046826e8c2d4ff9c8e5ef9dc9ea47f70.jpg" alt="nami-swan" style="border-radius: 300px">
 </p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
