@@ -31,6 +31,10 @@
                                 <x-heroicon-o-pencil-square
                                     class="w-6 h-6"/>
                             </a>
+                            <a href="{{ route('recipe.pdf', $recipe) }}" class="btn btn-outline btn-primary">
+                                <x-heroicon-s-document-arrow-down
+                                    class="w-6 h-6"/>
+                            </a>
 
                             <!-- Delete button (with confirmation) -->
                             <form action="{{ route('recipe.destroy', $recipe) }}" method="POST"
