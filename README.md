@@ -38,26 +38,29 @@ Make sure the database environment variables match the configuration for the Pos
 
 ### 3. Start the Application
 
-Use Laravel Sail to start the Docker containers:
+Use Laravel Sail to start the Docker containers, if the containers aren't built this command will do it automatically:
 
 ```bash
 ./vendor/bin/sail up
 ```
 
-This will build and run the following services:
+To render correctly the client, you need to run this too:
+```bash
+./vendor/bin/sail npm run dev
+```
+
+Now if you run this command
+
+```bash
+Docker ps
+```
+You should have this services running:
 
 - **laravel.test** (Laravel application)
 - **pgsql** (PostgreSQL database)
 
-### 4. Install Dependencies
 
-Once the services are running, install PHP dependencies inside the container:
-
-```bash
-./vendor/bin/sail composer install
-```
-
-### 5. Run Database Migrations
+### 4. Run Database Migrations
 
 Migrate the database using Laravel's migration system:
 
@@ -65,18 +68,18 @@ Migrate the database using Laravel's migration system:
 ./vendor/bin/sail artisan migrate
 ```
 
-### 6. Access the Application
+### 5. Access the Application
 
 The Laravel app will be accessible at `http://localhost` by default. If you have modified the `APP_PORT` environment variable, use that port instead.
 
 If you are running Vite for frontend assets, it will be accessible at `http://localhost:5173`.
 
-### 7. Shutting Down
+### 6. Shutting Down
 
 To stop and remove the containers, run:
 
 ```bash
-./vendor/bin/sail down
+./vendor/bin/sail stop
 ```
 
 ## Useful Commands
