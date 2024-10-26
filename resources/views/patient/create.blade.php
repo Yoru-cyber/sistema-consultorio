@@ -3,7 +3,7 @@
         <form action="{{ route('patient.store') }}"
               class="bg-indigo-100 rounded-lg p-5 flex flex-col items-center space-y-2.5" method="POST">
             @csrf
-            @method('PUT')
+            @method('POST')
             <!-- Nombre -->
             <div>
                 <label for="name" class="input input-bordered flex items-center gap-2">
