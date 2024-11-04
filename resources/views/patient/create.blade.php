@@ -32,8 +32,8 @@
                 <div>
                     <select name="sex" id="sex" class="select select-bordered w-full max-w-xs" required>
                         <option disabled selected>Sexo</option>
-                        <option value="male" {{ old('sex') == 'Hombre' ? 'selected' : '' }}>Masculino</option>
-                        <option value="female" {{ old('sex') == 'Mujer' ? 'selected' : '' }}>Femenino</option>
+                        <option value="Masculino" {{ old('sex') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                        <option value="Femenino" {{ old('sex') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
                     </select>
                     @error('sex')
                     <div class="alert alert-danger">{{ $message }}</div>
