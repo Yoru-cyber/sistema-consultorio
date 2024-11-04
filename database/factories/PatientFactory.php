@@ -26,7 +26,7 @@ class PatientFactory extends Factory
             'phone_number' => $this->faker->phoneNumber(),
             'emergency_phone_number' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
-            'sex' => $this->faker->randomElement(['Hombre', 'Mujer', 'Otro']),
+            'sex' => $this->faker->randomElement(['Masculino', 'Femenino']),
 
         ];
     }
