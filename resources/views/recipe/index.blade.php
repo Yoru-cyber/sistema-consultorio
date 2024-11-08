@@ -19,9 +19,9 @@
                         <th>{{ $recipe->id }}</th>
                         <td>{{ $recipe->patient->name }}</td>
                         <td>{{ $recipe->patient->dni }}</td>
-                        <td>Dr.{{ $recipe->doctor->name }}</td>
+                        <td>Dr. {{ $recipe->doctor->name }}</td>
                         <td>{{ $recipe->date }}</td>
-                        <td>{{ $recipe->prescription }}</td>
+                        <td ><p class="w-32 truncate">{{ $recipe->prescription }}</p></td>
                         <td class="inline-flex justify-center space-x-1.5">
                             <a href="{{ route('recipe.show', $recipe) }}" class="btn btn-outline btn-info">
                                 <x-heroicon-o-eye

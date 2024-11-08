@@ -18,6 +18,8 @@ class DoctorFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->name(),
+            'dni' => $this->faker->unique()->randomNumber(9),
         ];
     }
 }
