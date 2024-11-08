@@ -44,7 +44,7 @@
             </table>
         </div>
         <a href="{{ route('doctor.create') }}"
-           class="btn btn-outline btn-success fixed w-fit bottom-0 right-0 mb-10 sm:mb-5 m-2 p-2">Registrar un nuevo doctor
+           class="btn btn-outline btn-success fixed w-fit bottom-0 right-0 mb-10 sm:mb-5 m-2 p-2">Nuevo doctor
             <x-heroicon-o-user class="w-6 h-6"/>
         </a>
         {{$doctors->links()}}

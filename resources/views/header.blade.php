@@ -24,7 +24,7 @@
     </a>
     <a href="{{route ('doctor.index')}}"
     class="inline-flex justify-center text-lg font-medium  items-center  tracking-tighter btn btn-ghost">
-        doctores
+        Doctores
         <x-heroicon-o-user class="w-8 h-8 "/>
     </a>
 </nav>
