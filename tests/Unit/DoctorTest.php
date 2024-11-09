@@ -5,12 +5,13 @@ namespace Tests\Unit;
 use App\Models\Doctor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class DoctorTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_create_a_patient_with_fillable_attributes()
     {
         $data = [
