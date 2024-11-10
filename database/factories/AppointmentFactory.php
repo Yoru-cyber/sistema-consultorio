@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\Patient;
+use App\Models\Doctor;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Appointment>
  */
@@ -18,6 +19,10 @@ class AppointmentFactory extends Factory
     {
         return [
             //
+            'patient_id' => $this->faker->randomElement(Patient::pluck('id')),
+            'doctor_id' => $this->faker->randomElement(Doctor::pluck('id')),
+            'date' => $this->faker->date(),
+            'reason' => $this->faker->text()
         ];
     }
 }
