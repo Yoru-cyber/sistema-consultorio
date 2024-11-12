@@ -49,6 +49,7 @@
                     @enderror
                 </span>
             </div>
+            <!-- Prescripción -->
             <div class="flex flex-col items-center w-full">
                 <label for="prescription" class="inline-flex">Prescripción<x-heroicon-s-pencil class="w-5" /></label>
                 <textarea type="text" name="prescription" id="prescription" class="w-full h-36 rounded-lg border-2 border-solid border-zinc-400 shadow-2xl" required></textarea>
