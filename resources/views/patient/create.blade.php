@@ -9,7 +9,7 @@
                 <span>
                     <label for="name" class="input input-bordered flex items-center gap-2">
                         <x-heroicon-s-user-circle class="w-5" />
-                        <input type="text" name="name" id="name" class="grow" placeholder="Nombre Completo" required
+                        <input type="text" name="name" id="name" class="grow" value="{{old('name')}}" placeholder="Nombre Completo" required
                             maxlength="255">
                     </label>
                     @error('name')
@@ -20,7 +20,7 @@
                 <div>
                     <select name="sex" id="sex" class="select select-bordered w-full max-w-xs" required>
                         <option disabled selected>Sexo</option>
-                        <option value="Masculino" {{ old('sex') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                        <option value="Masculino" {{ old(key: 'sex') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
                         <option value="Femenino" {{ old('sex') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
                     </select>
                     @error('sex')
@@ -46,7 +46,7 @@
                 <span class="w-full">
                     <label for="dni" class="input input-bordered flex items-center gap-2">
                         <x-heroicon-s-identification class="w-5" />
-                        <input type="number" name="dni" id="dni" class="grow" placeholder="Cédula" required
+                        <input type="number" name="dni" id="dni" class="grow" value="{{old('dni')}}" placeholder="Cédula" required
                             min="10000000" max="99999999999999999999">
                     </label>
                     @error('dni')
