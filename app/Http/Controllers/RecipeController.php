@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
 use App\Models\Recipe;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -39,7 +41,9 @@ class RecipeController extends Controller
     public function create(): View
     {
         //
-        return view('recipe.create');
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('recipe.create', compact('patients', 'doctors'));
     }
 
     /**
