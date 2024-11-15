@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Certificate;
 use Illuminate\Http\Request;
-
+use App\Models\Patient;
+use App\Models\Doctor;
+use App\Http\Requests\StoreCertificateRequest;
+use App\Http\Requests\UpdateCertificateRequest;
 class CertificateController extends Controller
 {
     /**
@@ -13,6 +16,8 @@ class CertificateController extends Controller
     public function index()
     {
         //
+        $certificates = Certificate::paginate(10);
+        return view('certificate.index', compact('certificates'));
     }
 
     /**
@@ -21,14 +26,21 @@ class CertificateController extends Controller
     public function create()
     {
         //
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('certificate.create', compact('doctors', 'patients'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCertificateRequest $request)
     {
         //
+        $validated = $request->validated(); // This will automatically validate based on the rules
+        // Create a new recipe with the validated data
+        Certificate::create($validated);
+        return redirect()->route('certificate.index');
     }
 
     /**
@@ -37,6 +49,7 @@ class CertificateController extends Controller
     public function show(Certificate $certificate)
     {
         //
+        return view('certificate.show', compact('certificate'));
     }
 
     /**
@@ -45,14 +58,20 @@ class CertificateController extends Controller
     public function edit(Certificate $certificate)
     {
         //
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('certificate.edit', compact('doctors', 'patients'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(UpdateCertificateRequest $request, Certificate $certificate)
     {
-        //
+        $validated = $request->validated(); // This will automatically validate based on the rules
+        // Create a new recipe with the validated data
+        $certificate->update($validated);
+        return redirect()->route('certificate.index');
     }
 
     /**
@@ -61,5 +80,7 @@ class CertificateController extends Controller
     public function destroy(Certificate $certificate)
     {
         //
+        $certificate->delete();
+        return redirect()->route('certificate.index');
     }
 }
