@@ -15,7 +15,7 @@
         Recipes
         <x-healthicons-o-i-note-action class="w-8 h-8 mx-2" />
     </a>
-    <a class="inline-flex justify-center text-lg font-medium  items-center tracking-tighter btn btn-ghost">
+    <a href="{{route('certificate.index')}}" class="inline-flex justify-center text-lg font-medium  items-center tracking-tighter btn btn-ghost">
         Constancias
         <x-healthicons-o-i-certificate-paper class="w-8 h-8 " />
     </a>

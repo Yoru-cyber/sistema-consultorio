@@ -60,7 +60,7 @@ class CertificateController extends Controller
         //
         $patients = Patient::all();
         $doctors = Doctor::all();
-        return view('certificate.edit', compact('doctors', 'patients'));
+        return view('certificate.edit', compact('doctors', 'patients', 'certificate'));
     }
 
     /**
