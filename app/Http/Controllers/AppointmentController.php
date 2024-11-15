@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use Illuminate\Support\Facades\Log;
+use App\Models\Patient;
+use App\Models\Doctor;
 class AppointmentController extends Controller
 {
     /**
@@ -38,7 +40,9 @@ class AppointmentController extends Controller
     public function create()
     {
         //
-        return view('appointment.create');
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('appointment.create', compact('patients', 'doctors'));
     }
 
     /**
@@ -56,7 +60,9 @@ class AppointmentController extends Controller
     public function edit(Appointment $appointment)
     {
         //
-        return view('appointment.edit', ['appointment' => $appointment]);
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('appointment.edit', compact('appointment', 'patients', 'doctors'));
     }
 
     /**

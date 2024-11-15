@@ -25,7 +25,7 @@ class StoreAppointmentRequest extends FormRequest
             'patient_id' => 'required|exists:\App\Models\Patient,id',
             'doctor_id' => 'required|exists:\App\Models\Doctor,id',
             'date' => 'required|date',
-            'reason' => 'string|nullable'
+            'reason' => 'required'
         ];
     }
 }
