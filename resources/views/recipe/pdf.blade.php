@@ -1,16 +1,24 @@
 <style>
-    body {
-        font-family: Arial, sans-serif; /* Puedes reemplazar Arial por la fuente que más se asemeje */
+ body {
+        font-family: Arial, sans-serif; 
         text-align: left;
     }
-    .logo {
-    text-align: center;
-}
-    .logo img {
-    max-width: 100%; /* Asegura que el logo no exceda el ancho del contenedor */
-    height: auto;    /* Mantiene la proporción del logo */
-    display: inline-block; /* Asegura que el img se trate como un bloque en línea */
-    margin: 0 auto;  /* Agrega margen automático para centrar */
+    header{
+        padding: 10px;
+        text-align: left; /* Alineación del texto */
+    }
+    .logo{
+    display: inline-block;
+      vertical-align: middle; /* Alineación vertical */
+      margin-right: 20px; /* Espacio entre logo y texto */
+    }
+    .logo img{
+     width: 125px;
+    height: 125px;
+    }
+    .receta{
+        display: inline-block;
+        vertical-align: middle; /* Alineación vertical */
     }
     .nombre-doctor {
         font-weight: bold;
@@ -24,6 +32,13 @@
     .contacto {
         font-size: 12px;
     }
+    .firma{
+    font-size: 18px;
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    padding: 10px; 
+    }
 footer{
       position: fixed;
       left: 0;
@@ -31,13 +46,13 @@ footer{
       width: 100%;
       text-align: center;
 }
+}
 </style>
 <body>  
      <header>
         <div class="logo">
-            <img  src="{{'data:image/png;base64,' . base64_encode(file_get_contents(public_path('img/logo.png')))}}" class="w-5 h-5" alt="logo clinica">
+            <img  src="{{'data:image/png;base64,' . base64_encode(file_get_contents(public_path('img/logo.png')))}}" alt="logo clinica">
         </div>
-        <br>
     <div class="receta">
         <div class="nombre-doctor">Dr. {{ $recipe->doctor->name }}</div>
         <div class="especialidad">PEDIATRA - INTENSIVISTA</div>
@@ -49,9 +64,14 @@ footer{
         <hr>
     </header> 
 
-        <div>Nombre Paciente:{{ $recipe->patient->name }} </div>
-        <div>Cedula: {{ $recipe->patient->dni }}</div>
+        <div>{{ $recipe->patient->name }}   {{ $recipe->patient->dni }}</div>
         <div>Indicaciones: {{ $recipe->prescription }}</div>
+
+        <div class="firma">
+            <hr>
+           <p>Firma Dr. {{ $recipe->doctor->name }}</p> 
+        </div>
+
 
 <footer>
         FECHA: {{ $recipe->date }}
