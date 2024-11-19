@@ -24,7 +24,7 @@ class StorePatientRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'dni' => 'required|unique:patients,dni', // DNI should be unique and within a certain range of digits
-            'sex' => 'required|in:male,female,other', // Must be one of the predefined values
+            'sex' => 'required|in:Masculino,Femenino', // Must be one of the predefined values
             'email' => 'required|email|unique:patients,email', // Email must be valid and unique
             'address' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20', // Adjust the length based on your requirements

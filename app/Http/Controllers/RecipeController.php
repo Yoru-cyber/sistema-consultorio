@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
 use App\Models\Recipe;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -13,7 +15,7 @@ class RecipeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():View
+    public function index(): View
     {
         $recipes = Recipe::with('patient', 'doctor')->get();
         return view('recipe.index', compact('recipes'));
@@ -22,7 +24,7 @@ class RecipeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRecipeRequest $request):RedirectResponse
+    public function store(StoreRecipeRequest $request): RedirectResponse
     {
         //
         $validated = $request->validated(); // This will automatically validate based on the rules
@@ -39,7 +41,9 @@ class RecipeController extends Controller
     public function create(): View
     {
         //
-        return view('recipe.create');
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('recipe.create', compact('patients', 'doctors'));
     }
 
     /**
@@ -56,7 +60,9 @@ class RecipeController extends Controller
     public function edit(Recipe $recipe): View
     {
         //
-        return view('recipe.edit', compact('recipe'));
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('recipe.edit', compact('recipe', 'patients', 'doctors'));
     }
 
     /**

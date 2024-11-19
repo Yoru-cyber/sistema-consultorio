@@ -1,22 +1,20 @@
 <x-layout.main>
     <div class="flex flex-col w-screen h-screen items-center">
-        <form action="{{ route('recipe.update', $recipe) }}"
-            class="flex flex-col items-center space-y-2.5 bg-white border-solid border-2 lg:w-fit w-screen border-zinc-200 shadow-2xl text-zinc-700 rounded-lg p-5"
-            method="POST">
+        <form action="{{ route('certificate.store') }}"
+            class="flex flex-col items-center space-y-2.5 bg-white border-solid border-2 lg:w-fit w-screen border-zinc-200 shadow-2xl text-zinc-700 rounded-lg p-5" method="POST">
             @csrf
-            @method('PUT')
-            <!-- Nombre -->
+            @method('POST')
             <div class="flex flex-row space-x-2">
                 <div class="w-full">
                     <label for="patient_id">
                         <select name="patient_id" id="patient_id" class="select select-bordered w-full max-w-xs"
                             required>
+                            <option disabled selected>Paciente</option>
                             @foreach($patients as $patient)
-                                <option value="{{ $patient->id}}" selected="{{$recipe->patient->id}}">{{$patient->name}}
-                                </option>
+                                <option value="{{$patient->id}}">{{$patient->name}}</option>
                             @endforeach
                         </select>
-                        @error('patient_id')
+                        @error('doctor_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </label>
@@ -27,9 +25,9 @@
                 <div class="w-full">
                     <label for="doctor_id">
                         <select name="doctor_id" id="doctor_id" class="select select-bordered w-full max-w-xs" required>
+                            <option disabled selected>Doctor</option>
                             @foreach($doctors as $doctor)
-                                <option value="{{$doctor->id}}" selected="{{$recipe->doctor->id}}">{{$doctor->name}}
-                                </option>
+                                <option value="{{$doctor->id}}">{{$doctor->name}}</option>
                             @endforeach
                         </select>
                         @error('doctor_id')
@@ -44,26 +42,26 @@
             <div>
                 <span>
                     <label for="date" class="input input-bordered flex items-center gap-2">
-                        <input type="date" name="date" id="date" class="grow" value="{{ old('date', $recipe->date) }}" required>
+                        <input type="date" name="date" id="date" class="grow" value="{{ old('date') }}" required>
                     </label>
-                    @error('birthday')
+                    @error('date')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </span>
             </div>
-            <!-- Prescripción -->
+            <!-- Descripción -->
             <div class="flex flex-col items-center w-full">
-                <label for="prescription" class="inline-flex">Prescripción<x-heroicon-s-pencil class="w-5" /></label>
-                <textarea type="text" name="prescription" id="prescription" class="w-full h-36 rounded-lg border-2 border-solid border-zinc-400 shadow-2xl" required>{{old('prescription', $recipe->prescription)}}</textarea>
+                <label for="description" class="inline-flex">Descripción<x-heroicon-s-pencil class="w-5" /></label>
+                <textarea type="text" name="description" id="description" class="w-full h-36 rounded-lg border-2 border-solid border-zinc-400 shadow-2xl" required></textarea>
                 
-                @error('prescription')
+                @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <!-- Botón de envío -->
             <div>
-                <button type="submit" class="btn btn-primary">Guardar Recipe</button>
+                <button type="submit" class="btn btn-primary">Guardar Constancia</button>
             </div>
         </form>
     </div>
