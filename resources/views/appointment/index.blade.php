@@ -11,6 +11,7 @@
                         <th>Doctor</th>
                         <th>Fecha de Cita</th>
                         <th>Razón</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody class="w-full lg:w-fit text-center">

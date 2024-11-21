@@ -1,53 +1,10 @@
-<style>
- body {
-        font-family: Arial, sans-serif; 
-        text-align: left;
-    }
-    header{
-        padding: 10px;
-        text-align: left; /* Alineación del texto */
-    }
-    .logo{
-    display: inline-block;
-      vertical-align: middle; /* Alineación vertical */
-      margin-right: 20px; /* Espacio entre logo y texto */
-    }
-    .logo img{
-     width: 125px;
-    height: 125px;
-    }
-    .receta{
-        display: inline-block;
-        vertical-align: middle; /* Alineación vertical */
-    }
-    .nombre-doctor {
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    .especialidad {
-        font-size: 14px;
-    }
-
-    .contacto {
-        font-size: 12px;
-    }
-    .firma{
-    font-size: 18px;
-    position: absolute; 
-    bottom: 0; 
-    right: 0; 
-    padding: 10px; 
-    }
-footer{
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-}
-}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $recipe->patient->name }}</title>
+</head>
 <body>  
      <header>
         <div class="logo">
@@ -72,8 +29,68 @@ footer{
            <p>Firma Dr. {{ $recipe->doctor->name }}</p> 
         </div>
 
-
 <footer>
         FECHA: {{ $recipe->date }}
-</footer>   
+</footer>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: left;
+    }
+
+    header {
+        padding: 10px;
+        text-align: left;
+        /* Alineación del texto */
+    }
+
+    .logo {
+        display: inline-block;
+        vertical-align: middle;
+        /* Alineación vertical */
+        margin-right: 20px;
+        /* Espacio entre logo y texto */
+    }
+
+    .logo img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .receta {
+        display: inline-block;
+        vertical-align: middle;
+        /* Alineación vertical */
+    }
+
+    .nombre-doctor {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .especialidad {
+        font-size: 14px;
+    }
+
+    .contacto {
+        font-size: 12px;
+    }
+
+    .firma {
+        font-size: 18px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+    }
+
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+</style>
 </body>
+</html>

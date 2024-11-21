@@ -1,8 +1,8 @@
 <x-layout.main>
-    <div class="w-1/2 h-screen flex flex-col items-center mt-10">
+    <div class="w-screen h-screen flex flex-col items-center mt-10">
         <div
             class="overflow-x-auto bg-white border-solid border-2 lg:w-fit w-screen border-zinc-200 shadow-2xl text-zinc-700 rounded-lg">
-            <table class="table w-1/2">
+            <table class="table">
                 <thead class="text-center">
                 <tr class="space-x-3">
                     <th>ID</th>
@@ -11,6 +11,7 @@
                     <th>Doctor</th>
                     <th>Fecha de Emisión</th>
                     <th>Prescripción</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody class="w-1/2 lg:w-fit text-center">
@@ -21,7 +22,7 @@
                         <td>{{ $recipe->patient->dni }}</td>
                         <td>Dr. {{ $recipe->doctor->name }}</td>
                         <td>{{ $recipe->date }}</td>
-                        <td ><p class="w-16 ">{{ $recipe->prescription }}</p></td>
+                        <td ><p class="w-32 truncate ">{{ $recipe->prescription }}</p></td>
                         <td class="inline-flex justify-center space-x-1.5">
                             <a href="{{ route('recipe.show', $recipe) }}" class="btn btn-outline btn-info">
                                 <x-heroicon-o-eye
