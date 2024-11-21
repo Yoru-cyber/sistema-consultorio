@@ -58,7 +58,7 @@
                 <!-- Fecha de Nacimiento -->
                 <span>
                     <label for="birthday" class="input input-bordered flex items-center gap-2">
-                        <input type="date" name="birthday" id="birthday" class="grow" value={{old('birthday', $patient->birthday )}}
+                        <input type="date" name="birthday" id="birthday" class="grow" value={{old('birthday', $patient->birthday)}}
                             required>
                     </label>
                     @error('birthday')
@@ -121,7 +121,19 @@
                 </span>
 
             </div>
-
+            <!-- Condiciones -->
+            <div class="w-full">
+                <select id="conditions" name="conditions[]" class="select select-bordered w-full max-w-xs" multiple>
+                    @foreach($conditions as $condition)
+                        <option value="{{ $condition->id }}" {{ $patient->conditions->contains($condition->id) ? 'selected' : '' }}>
+                            {{ $condition->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('conditions')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
             <!-- Botón de envío -->
             <div>
                 <button type="submit" class="btn btn-primary">Guardar Paciente</button>

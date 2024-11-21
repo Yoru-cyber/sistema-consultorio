@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
+use App\Models\Condition;
 use Illuminate\Support\Facades\Log;
 
 class PatientController extends Controller
@@ -27,7 +28,8 @@ class PatientController extends Controller
         $validated = $request->validated(); // This will automatically validate based on the rules
 
         // Create a new patient with the validated data
-        Patient::create($validated);
+        $patient = Patient::create($validated);
+        $patient->conditions()->attach($request->conditions);
 
         return redirect()->route('patient.index');
     }
@@ -38,7 +40,8 @@ class PatientController extends Controller
     public function create()
     {
         //
-        return view('patient.create');
+        $conditions = Condition::all();
+        return view('patient.create', compact('conditions'));
     }
 
     /**
@@ -56,7 +59,8 @@ class PatientController extends Controller
     public function edit(Patient $patient)
     {
         //
-        return view('patient.edit', ['patient' => $patient]);
+        $conditions = Condition::all();
+        return view('patient.edit', compact('patient','conditions'));
     }
 
     /**
@@ -68,6 +72,7 @@ class PatientController extends Controller
         Log::info($request->all());
         $validated = $request->validated();
         $patient->update($validated);
+        $patient->conditions()->sync($request->conditions);
         return redirect()->route('patient.index');
     }
 

@@ -68,7 +68,11 @@
                     <x-heroicon-o-calendar
                         class="w-6 h-6"/> {{$patient->birthday->format('d-m-Y')}}</p>
             </div>
-
+            <div>
+                    @foreach($patient->conditions as $condition)
+                        <p class="inline-flex items-center justify-center">{{ $condition->name }}</p>
+                    @endforeach
+            </div>
         </div>
 
     </div>
