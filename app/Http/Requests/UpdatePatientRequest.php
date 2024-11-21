@@ -32,6 +32,8 @@ class UpdatePatientRequest extends FormRequest
             'emergency_phone_number' => 'required|string|max:20', // Same as phone_number
             'age' => 'required|integer|min:0|max:130', // Age must be a valid integer within a reasonable range
             'birthday' => 'required|date|before:today', // Birthday must be a valid date in the past
+            'conditions' => 'array',
+            'conditions.*' => 'exists:conditions,id',
         ];
     }
 }

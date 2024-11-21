@@ -38,6 +38,10 @@ class Patient extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+    public function conditions()
+    {
+        return $this->belongsToMany(Condition::class, 'patient_conditions');
+    }
 
 
 }
