@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Certificate;
 
 class CertificateSeeder extends Seeder
 {
@@ -13,5 +14,6 @@ class CertificateSeeder extends Seeder
     public function run(): void
     {
         //
+        Certificate::factory()->count(20)->create();
     }
 }

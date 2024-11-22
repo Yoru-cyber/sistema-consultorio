@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Doctor;
+use App\Models\Patient;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Certificate>
@@ -18,6 +20,10 @@ class CertificateFactory extends Factory
     {
         return [
             //
+            'patient_id' => $this->faker->randomElement(Patient::pluck('id')),
+            'doctor_id' => $this->faker->randomElement(Doctor::pluck('id')),
+            'date' => $this->faker->date(),
+            'description' => $this->faker->text()
         ];
     }
 }
