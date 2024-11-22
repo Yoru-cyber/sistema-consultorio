@@ -32,6 +32,6 @@
         <a href="{{route('condition.index')}}"
         class="inline-flex justify-center text-lg font-medium  items-center  tracking-tighter btn btn-ghost">
         Condiciones
-        <x-healthicons-o-virus-research class="w-8 h-8 " />
+        <x-healthicons-o-clinical-fe class="w-8 h-8 " />
     </a>
 </nav>

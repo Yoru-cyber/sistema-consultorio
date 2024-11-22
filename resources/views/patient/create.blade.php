@@ -5,7 +5,7 @@
             method="POST">
             @csrf
             @method('POST')
-            <div class="flex flex-row justify-around items-center space-x-2 w-full">
+            <div class="flex flex-row justify-between items-center space-x-2 w-full">
                 <!-- Nombre -->
                 <span>
                     <label for="name" class="input input-bordered flex items-center gap-2">
@@ -119,12 +119,16 @@
 
             </div>
             <!-- Condiciones -->
-            <div class="w-full">
-                <select id="conditions" name="conditions[]" class="select select-bordered w-full max-w-xs" multiple required>
-                    @foreach($conditions as $condition)
-                        <option value="{{ $condition->id }}">{{ $condition->name }}</option>
-                    @endforeach
-                </select>
+            <div class="w-full flex flex-col items-center">
+                <label class="flex flex-row items-center text-gray-400">
+                    Condiciones <x-healthicons-f-i-documents-accepted class="w-8 h-8 text-slate-800" />
+                    <select id="conditions" name="conditions[]"
+                        class="select select-bordered w-full max-w-xs text-zinc-600" multiple required>
+                        @foreach($conditions as $condition)
+                            <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                        @endforeach
+                    </select>
+                </label>
                 @error('conditions')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

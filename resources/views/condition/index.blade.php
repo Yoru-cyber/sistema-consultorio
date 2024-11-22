@@ -41,7 +41,7 @@
         </div>
         <a href="{{ route('condition.create') }}"
             class="btn btn-outline btn-success fixed w-fit bottom-0 right-0 mb-10 sm:mb-5 m-2 p-2">Nueva condición
-            <x-healthicons-o-virus-alt class="w-6 h-6" />
+            <x-healthicons-o-clinical-fe class="w-6 h-6" />
         </a>
         {{$conditions->links()}}
     </div>

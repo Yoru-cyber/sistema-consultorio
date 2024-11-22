@@ -5,10 +5,10 @@
             method="POST">
             @csrf
             @method('PUT')
-            <div class="flex flex-row justify-around items-center space-x-2 w-full">
+            <div class="flex flex-row justify-between items-center w-full">
                 <!-- Nombre -->
                 <span>
-                    <label for="name" class="input input-bordered flex items-center gap-2">
+                    <label for="name" class="input input-bordered flex items-center">
                         <x-heroicon-s-user-circle class="w-5" />
                         <input type="text" name="name" id="name" class="grow" value="{{ old('name', $patient->name)}}"
                             placeholder="Nombre Completo" required maxlength="255">
@@ -58,8 +58,8 @@
                 <!-- Fecha de Nacimiento -->
                 <span>
                     <label for="birthday" class="input input-bordered flex items-center gap-2">
-                        <input type="date" name="birthday" id="birthday" class="grow" value={{old('birthday', $patient->birthday)}}
-                            required>
+                        <input type="date" name="birthday" id="birthday" class="grow"
+                            value="{{old('birthday', $patient->birthday)}}" required>
                     </label>
                     @error('birthday')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -122,18 +122,24 @@
 
             </div>
             <!-- Condiciones -->
-            <div class="w-full">
-                <select id="conditions" name="conditions[]" class="select select-bordered w-full max-w-xs" multiple>
-                    @foreach($conditions as $condition)
-                        <option value="{{ $condition->id }}" {{ $patient->conditions->contains($condition->id) ? 'selected' : '' }}>
-                            {{ $condition->name }}
-                        </option>
-                    @endforeach
-                </select>
+            <div class="w-full flex flex-col items-center">
+                <label class="flex flex-row items-center text-gray-400">
+                    <x-healthicons-f-i-documents-accepted class="w-8 h-8 text-slate-800" />
+                    <select id="conditions" name="conditions[]"
+                        class="select select-bordered w-full max-w-xs text-zinc-600" multiple required>
+                        @foreach($conditions as $condition)
+                            <option value="{{ $condition->id }}" {{ $patient->conditions->contains($condition->id) ? 'selected' : '' }}>
+                                {{ $condition->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </label>
                 @error('conditions')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+
             <!-- Botón de envío -->
             <div>
                 <button type="submit" class="btn btn-primary">Guardar Paciente</button>
